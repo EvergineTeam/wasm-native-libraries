@@ -7,6 +7,13 @@
 
 int hello()
 {
-    printf("Hello from Wasm Native Library!");
+    EM_ASM({ console.log("Hello from Wasm Native Library!"); });
     return 42;
+}
+
+void callCbk(callback cbk)
+{
+    EM_ASM({ console.log("Calling .Net callback..."); });
+    cbk();
+    EM_ASM({ console.log("Callback all right!"); });
 }

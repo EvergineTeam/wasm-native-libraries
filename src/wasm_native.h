@@ -7,9 +7,7 @@ typedef struct struct_example
     double decimal;
 } struct_example;
 
-typedef void (*callback_example)(void);
-
-callback_example onCbk;
+typedef void (*callback)(void);
 
 #ifdef __cplusplus
 extern "C"
@@ -17,6 +15,7 @@ extern "C"
 #endif
 
     int hello();
+    void callCbk(callback cbk);
 
 #ifdef __cplusplus
 } // extern "C"
