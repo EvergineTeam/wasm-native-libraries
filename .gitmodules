@@ -1,0 +1,3 @@
+[submodule "mcut"]
+	path = mcut
+	url = git@github.com:cutdigital/mcut.git
