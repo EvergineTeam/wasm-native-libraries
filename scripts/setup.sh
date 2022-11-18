@@ -3,6 +3,9 @@ set -e
 
 EMSDK_VERSION=2.0.23
 
+# build dependencies
+sudo apt update && sudo apt install build-essential cmake ninja-build -y
+
 # EMSDK
 mkdir -p ./thirdparty
 pushd ./thirdparty
