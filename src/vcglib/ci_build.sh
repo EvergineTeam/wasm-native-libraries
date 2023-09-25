@@ -28,7 +28,6 @@ echo "activating emsdk environment"
 ./emsdk/emsdk activate latest
 echo "sourcing emsdk environment"
 source ./emsdk/emsdk_env.sh 
-emcmake
 
 echo "moving to vcglib native facade directory"
 cd $VCGLIB_NATIVE_FACADE_DIR
