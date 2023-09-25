@@ -13,7 +13,7 @@ echo "VCGLIB_NATIVE_DIR: $VCGLIB_NATIVE_DIR"
 
 cd $SCRIPT_DIR
 echo "updating repos"
-git submoudle init
+git submodule init
 git submodule update
 
 echo "Cleaning Blazor directories"
@@ -24,7 +24,7 @@ echo "---------------------------------------------------"
 cd $SCRIPT_DIR
 
 echo "activating emsdk environment"
-./emsdk install latest
+./emsdk/emsdk install latest
 ./emsdk/emsdk activate latest
 echo "sourcing emsdk environment"
 source ./emsdk/emsdk_env.sh 
