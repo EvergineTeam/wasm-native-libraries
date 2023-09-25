@@ -1,0 +1,80 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<br />
+<br />
+
+Message:
+<p>
+    @message
+</p>
+
+@code {
+
+    private int currentCount = 1;
+
+    private string message = "Hello World!";
+
+    private void htmlAppendLine(StringBuilder sb, string text)
+    {
+        sb.AppendLine(text + "\n");
+    }
+
+    private void IncrementCount()
+    {
+        try
+        {
+
+            currentCount++;
+
+            var vcglib = new VCGLibFacade();
+            currentCount = (int)VCGLibFacade.processTestNumberNative(currentCount);
+
+            var sb = new StringBuilder();
+            htmlAppendLine(sb, "Hello World!");
+            htmlAppendLine(sb, "Test create mesh ...");
+
+            currentCount = (int)VCGLibFacade.createMeshTest();
+            htmlAppendLine(sb, "Test creating mesh object wrapper ...");
+
+            var mesh = VCGLibMesh.CreateEmptyMesh();
+            htmlAppendLine(sb, "internal mesh vertexes count: " + mesh.VN);
+            htmlAppendLine(sb, "mesh pointer: " + mesh.ToString());
+            htmlAppendLine(sb, "Adding vertexes ...");
+
+            mesh.DeleteFace(0);
+            mesh.AddVertex(0, 0, 0);
+            mesh.AddVertex(0, 0, 1);
+            mesh.AddVertex(0, 1, 0);
+
+            htmlAppendLine(sb, "internal mesh vertexes count: " + mesh.VN);
+            htmlAppendLine(sb, "Adding faces ...");
+            htmlAppendLine(sb, "internal mesh faces count: " + mesh.FN);
+            mesh.AddFace(0, 1, 2);
+            htmlAppendLine(sb, "internal mesh faces count: " + mesh.FN);
+            htmlAppendLine(sb, "internal edge count: " + mesh.EN);
+
+            htmlAppendLine(sb, "-------------------");
+            var icosahedron = VCGLibMesh.CreateIcosahedron();
+            htmlAppendLine(sb, "Icosahedron vertexes count: " + icosahedron.VN);
+            htmlAppendLine(sb, "Icosahedron faces count: " + icosahedron.FN);
+            htmlAppendLine(sb, "Icosahedron edge count: " + icosahedron.EN);
+
+            htmlAppendLine(sb, "-------------------");
+            htmlAppendLine(sb, "Icosahedron removing face: " + icosahedron.FN);
+            icosahedron.DeleteFace(0);
+            htmlAppendLine(sb, "Icosahedron faces count: " + icosahedron.FN);
+            message = sb.ToString();
+        }
+        catch (Exception e)
+        {
+            message = "ERROR:" + e.ToString();
+        }
+    }
+}

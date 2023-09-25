@@ -1,0 +1,6 @@
+[submodule "src/vcglib/emsdk"]
+	path = src/vcglib/emsdk
+	url = https://github.com/emscripten-core/emsdk.git
+[submodule "src/vcglib/vcglib-sharp-wasm/vcglib_wasm/vcglib"]
+	path = src/vcglib/vcglib-sharp-wasm/vcglib_wasm/vcglib
+	url = https://github.com/cnr-isti-vclab/vcglib.git
