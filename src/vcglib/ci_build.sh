@@ -2,6 +2,7 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+EMSDK_PATH="$SCRIPT_DIR/../../thirdparty/emsdk/emsdk_env.sh"
 VCGLIB_WASM_PINVOKE_DIR=$SCRIPT_DIR/vcglib-sharp-wasm
 VCGLIB_NATIVE_FACADE_DIR=$VCGLIB_WASM_PINVOKE_DIR/vcglib_wasm
 VCGLIB_NATIVE_DIR=$VCGLIB_NATIVE_FACADE_DIR/vcglib
@@ -24,10 +25,7 @@ echo "---------------------------------------------------"
 cd $SCRIPT_DIR
 
 echo "activating emsdk environment"
-./emsdk/emsdk install latest
-./emsdk/emsdk activate latest
-echo "sourcing emsdk environment"
-source ./emsdk/emsdk_env.sh 
+source $EMSDK_PATH > /dev/null
 
 echo "moving to vcglib native facade directory"
 cd $VCGLIB_NATIVE_FACADE_DIR
