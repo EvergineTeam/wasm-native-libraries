@@ -1,6 +1,6 @@
 # WASM Native Libraries
 
-Sandbox to test wasm static libraries compilation and linking with .Net 6.0
+Sandbox to test wasm static libraries compilation and linking with .Net 8.0
 
 ## Setup emscripten
 
