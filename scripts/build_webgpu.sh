@@ -14,7 +14,7 @@ source $EMSDK_PATH > /dev/null
 # emcc webgpu/webgpu.h -c -o $BIN_PATH/libWebGPU.o
 # popd
 
-rm -rf $BIN_PATH
+# # rm -rf $BIN_PATH
 mkdir -p $BIN_PATH
 pushd ./src
 emcc wgpu.c -I system/include -c -o $BIN_PATH/libWebGPU.o

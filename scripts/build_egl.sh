@@ -14,8 +14,8 @@ source $EMSDK_PATH > /dev/null
 # emcc EGL/egl.h -c -o $BIN_PATH/libEGL.o
 # popd
 
-rm -rf $BIN_PATH
+# # rm -rf $BIN_PATH
 mkdir -p $BIN_PATH
 pushd ./src
-emcc egl.c -I system/include -c -o $BIN_PATH/libEGL.o
+emcc egl.c -I system/include -sFULL_ES3 -c -o $BIN_PATH/libEGL.o
 popd
